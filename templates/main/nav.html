@@ -1,0 +1,80 @@
+{% load static %}
+
+<!-- Header-->
+<header>
+    <nav class="container-fluid navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Furniture Box</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">All products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+          </ul>
+          <form action="" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 w-75" type="search" name="q" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-none my-2 my-sm-0" aria-label="search" type="submit"><i
+                class="fa fa-search"></i></button>
+          </form>
+        </div>
+
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+          <li class="list-inline-item dropdown">
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <div class="text-center">
+                <div><i class="fas fa-user fa-lg"></i></div>
+                <p class="my-0">Account</p>
+              </div>
+            </a>
+            <div class="dropdown-menu py-0 border-0 rounded-lg bg-light shadow-lg" aria-labelledby="user-options">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a href="" class="dropdown-item py-3">Admin</a>
+              <a href="" class="dropdown-item py-3">Add Item</a>
+          
+              <hr class="border-primary py-1 w-50">
+              {% endif %}
+              <a href="" class="dropdown-item py-3">My Profile</a>
+              <a href="{% url 'account_logout' %}" class="dropdown-item py-3">Logout</a>
+              {% else %}
+              <a href="{% url 'account_signup' %}" class="dropdown-item py-3">Register</a>
+              <a href="{% url 'account_login' %}" class="dropdown-item py-3">Login</a>
+              {% endif %}
+            </div>
+          </li>
+          <li class="list-inline-item">
+            <a class="{% if cart_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link"
+              href="#">
+              <div class="text-center">
+                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                <p class="my-0">
+                  {% if subtotal %}
+                  €{{ subtotal|floatformat:2 }}
+                  {% else %}
+                  €0.00
+                  {% endif %}
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+    <div
+      class="free-shipping-banner d-flex justify-content-center align-items-center text-white bg-primary font-bold py-3">
+      <strong class="lead text-bold">Free shipping on orders over €{{ free_shipping_threshold }}!</strong>
+    </div>
+  </header>
