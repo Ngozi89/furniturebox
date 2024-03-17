@@ -4,7 +4,7 @@
 <header>
     <nav class="container-fluid navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Furniture Box</a>
+        <a class="navbar-brands nav-link font-weight-bold" href="/">Furniture Hall</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
@@ -13,15 +13,69 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home</a>
+             
+            <li class="nav-item dropdown active">
+              <a class="navbar-brand logo-font font-weight-bold nav-link text-black mr-3" href="{% url 'home' %}" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Home
+              </a>
+              <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+                  <a href="" class="dropdown-item">Kitchen</a>
+                  <a href="" class="dropdown-item">Light</a>
+                  <a href="" class="dropdown-item">Rugs</a>
+                  <a href="" class="dropdown-item">Childrens Room</a>
+                  <a href="" class="dropdown-item">Canvas</a>
+              </div>
+          </li>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">All products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-          </ul>
+
+            <li class="nav-item dropdown">
+              <a class="navbar-brand logo-font font-weight-bold nav-link text-black mr-3" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  All Products
+              </a>
+              <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                  <a href="" class="dropdown-item">By Price</a>
+                  <a href="" class="dropdown-item ">By Rating</a>
+                  <a href="" class="dropdown-item ">By Category</a>
+                  <a href="" class="dropdown-item">All Products</a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="navbar-brand logo-font font-weight-bold nav-link text-black mr-3" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Living Room
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+                <a href="" class="dropdown-item">Soffa</a>
+                <a href="" class="dropdown-item">Tv bank</a>
+                <a href="" class="dropdown-item">Soffa Table</a>
+                <a href="" class="dropdown-item">All Sitting Room Deco</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="navbar-brand logo-font font-weight-bold nav-link text-black mr-3" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Bed Room
+          </a>
+          <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
+              <a href="" class="dropdown-item">Bed</a>
+              <a href="" class="dropdown-item">Madress</a>
+              <a href="" class="dropdown-item">Wardrobe</a>
+              <a href="" class="dropdown-item">Makeup Table</a>
+              <a href="" class="dropdown-item">All Bedroom Deco</a>
+          </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="navbar-brand logo-font font-weight-bold nav-link text-black mr-3" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Special Offers
+        </a>
+        <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+            <a href="" class="dropdown-item">New Arrivals</a>
+            <a href="" class="dropdown-item">Deals</a>
+            <a href="" class="dropdown-item">Clearance</a>
+            <a href="" class="dropdown-item">All Specials</a>
+        </div>
+    </li>
+
+  </ul>
           <form action="" class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2 w-75" type="search" name="q" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-none my-2 my-sm-0" aria-label="search" type="submit"><i
@@ -34,8 +88,8 @@
             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               <div class="text-center">
-                <div><i class="fas fa-user fa-lg"></i></div>
-                <p class="my-0">Account</p>
+                <div><i class="fas fa-user fa-lg" id="account"></i></div>
+                <p class="my-0" id="account">Account</p>
               </div>
             </a>
             <div class="dropdown-menu py-0 border-0 rounded-lg bg-light shadow-lg" aria-labelledby="user-options">
@@ -58,8 +112,8 @@
             <a class="{% if cart_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link"
               href="#">
               <div class="text-center">
-                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                <p class="my-0">
+                <div><i class="fas fa-shopping-cart fa-lg" id="account"></i></div>
+                <p class="my-0" id="account">
                   {% if subtotal %}
                   €{{ subtotal|floatformat:2 }}
                   {% else %}
@@ -70,11 +124,6 @@
             </a>
           </li>
         </ul>
-
       </div>
-    </nav>
-    <div
-      class="free-shipping-banner d-flex justify-content-center align-items-center text-white bg-primary font-bold py-3">
-      <strong class="lead text-bold">Free shipping on orders over €{{ free_shipping_threshold }}!</strong>
-    </div>
+</nav>
   </header>
