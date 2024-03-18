@@ -93,3 +93,9 @@ body {
 .stripe-img {
     width: 30vh;
 }
+
+@media (min-width: 1200px) {
+    .stripe-img{
+        margin-left: 180Px;
+    }
+}
